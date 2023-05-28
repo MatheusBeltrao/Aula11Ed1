@@ -1,0 +1,32 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
+public class Exercicio4 {
+    public static Queue<Integer> inverterFila(Queue<Integer> F1) {
+        Stack<Integer> pilha = new Stack<>();
+        Queue<Integer> F2 = new LinkedList<>();
+
+        while (!F1.isEmpty()) {
+            pilha.push(F1.poll());
+        }
+
+        while (!pilha.isEmpty()) {
+            F2.offer(pilha.pop());
+        }
+
+        return F2;
+    }
+
+    public static void main(String[] args) {
+        Queue<Integer> F1 = new LinkedList<>();
+
+        for (int i = 0; i < 100; i++) {
+            F1.offer((int) (Math.random() * 100));
+        }
+
+        System.out.println("Fila F1 original: " + F1);
+        Queue<Integer> F2 = inverterFila(F1);
+        System.out.println("Fila F2 invertida: " + F2);
+    }
+}
