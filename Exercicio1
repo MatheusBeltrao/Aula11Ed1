@@ -1,0 +1,51 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Exercicio1 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite uma sequência de caracteres: ");
+        String texto = scanner.nextLine();
+        System.out.println("Texto na ordem inversa:");
+        imprimirOrdemInversa(texto);
+        boolean ehPalindromo = verificarPalindromo(texto);
+        if (ehPalindromo) {
+            System.out.println("O texto é um palíndromo.");
+        } else {
+            System.out.println("O texto não é um palíndromo.");
+        }
+    }
+
+    public static void imprimirOrdemInversa(String texto) {
+        Stack<Character> pilha = new Stack<>();
+
+        for (int i = 0; i < texto.length(); i++) {
+            pilha.push(texto.charAt(i));
+        }
+
+        while (!pilha.isEmpty()) {
+            System.out.print(pilha.pop());
+        }
+        System.out.println();
+    }
+
+    public static boolean verificarPalindromo(String texto) {
+        Stack<Character> pilha = new Stack<>();
+
+        texto = texto.replaceAll("[ .]", "");
+
+        for (int i = 0; i < texto.length(); i++) {
+            pilha.push(texto.charAt(i));
+        }
+
+        for (int i = 0; i < texto.length(); i++) {
+            if (pilha.pop() != texto.charAt(i)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+
+
