@@ -1,0 +1,27 @@
+import java.util.*;
+
+public class Exercicio8 {
+    public static void main(String[] args) {
+        Stack<Integer> pilhaP = new Stack<>();
+        Stack<Integer> pilhaN = new Stack<>();
+
+        Random random = new Random();
+        for (int i = 0; i < 1000; i++) {
+            int numero = random.nextInt(201) - 100; // -100 a 100
+            if (numero > 0) {
+                pilhaP.push(numero);
+            } else if (numero < 0) {
+                pilhaN.push(numero);
+            } else {
+                if (!pilhaP.isEmpty() && !pilhaN.isEmpty()) {
+                    int numeroP = pilhaP.pop();
+                    int numeroN = pilhaN.pop();
+                    System.out.println("Número retirado da pilha P: " + numeroP);
+                    System.out.println("Número retirado da pilha N: " + numeroN);
+                } else {
+                    System.out.println("Não há elementos suficientes nas pilhas.");
+                }
+            }
+        }
+    }
+}
