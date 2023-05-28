@@ -1,0 +1,38 @@
+import java.util.Stack;
+import java.util.Scanner;
+
+public class Exercicio2{
+    public static void main(String[] args) {
+        Stack<Integer> pilha = new Stack<>();
+        pilha.push(10);
+        pilha.push(20);
+        pilha.push(30);
+        pilha.push(40);
+        pilha.push(50);
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite a chave do item a ser removido: ");
+        int chave = scanner.nextInt();
+
+        removerItemDaPilha(pilha, chave);
+
+        System.out.println("Pilha após a remoção do item com chave " + chave + ":");
+        System.out.println(pilha);
+    }
+
+    public static void removerItemDaPilha(Stack<Integer> pilha, int chave) {
+        Stack<Integer> auxiliar = new Stack<>();
+
+        while (!pilha.isEmpty() && pilha.peek() != chave) {
+            auxiliar.push(pilha.pop());
+        }
+
+        if (!pilha.isEmpty()) {
+            pilha.pop(); 
+        }
+
+        while (!auxiliar.isEmpty()) {
+            pilha.push(auxiliar.pop());
+        }
+    }
+}
