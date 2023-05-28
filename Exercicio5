@@ -1,0 +1,24 @@
+import java.util.*;
+
+public class Exercicio5 {
+    public static void main(String[] args) {
+        Queue<Integer> filaF = new LinkedList<>();
+        Stack<Integer> pilhaP = new Stack<>();
+        Set<Integer> numerosSorteados = new HashSet<>();
+
+        // Sortear 1000 números aleatórios
+        Random random = new Random();
+        for (int i = 0; i < 1000; i++) {
+            int numeroSorteado = random.nextInt(1000);
+            if (!numerosSorteados.contains(numeroSorteado)) {
+                filaF.offer(numeroSorteado);
+                numerosSorteados.add(numeroSorteado);
+            } else {
+                pilhaP.push(numeroSorteado);
+            }
+        }
+
+        System.out.println("Fila F: " + filaF);
+        System.out.println("Pilha P: " + pilhaP);
+    }
+}
